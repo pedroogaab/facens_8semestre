@@ -29,5 +29,18 @@ public class App {
         // Degine a quantidade de cursos que o aluno fez > se passar do maximo
         // disponivel, atribui a quantidade maxima de cursos disponiveis
         cursos.setCursosConcluidos("João", 51);
+
+        cursos.setCursosConcluidos("Pedro", 5);
+        forumManager.forumEscito("João");
+        forumManager.forumEscito("João");
+        forumManager.forumEscito("João");
+        forumManager.forumEscito("Maria");
+        forumManager.forumEscito("Maria");
+        forumManager.forumEscito("Maria");
+        forumManager.alunoVencedor();
+
+        cursos.showStatus();
+
+
     }
 }

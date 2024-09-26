@@ -9,9 +9,9 @@ public class Cursos {
 
     public Cursos() {
         // Inicializa o dicionário com alunos
-        alunos.put("Pedro", new Aluno("Pedro", "Basic", 1, 0, 0));
-        alunos.put("Maria", new Aluno("Maria", "Basic", 1, 0, 0));
-        alunos.put("João", new Aluno("João", "Basic", 1, 0, 0));
+        alunos.put("Pedro", new Aluno("Pedro", "Basic", 1, 0, 0, 0));
+        alunos.put("Maria", new Aluno("Maria", "Basic", 1, 0, 0, 0));
+        alunos.put("João", new Aluno("João", "Basic", 1, 0, 0, 0));
     }
 
     public void setCursosConcluidos(String nome, int concluidos) {
@@ -21,6 +21,8 @@ public class Cursos {
             if (concluidos > MAX_CURSOS) {
                 concluidos = MAX_CURSOS;
             }
+
+            int coinsRewards = concluidos - 12 * 3;
 
             aluno.cursosRealizados = concluidos;
 
@@ -35,6 +37,12 @@ public class Cursos {
                 aluno.cursosDisponiveis = MAX_CURSOS;
                 System.out.println("\nO aluno " + nome + " concluiu todos os cursos disponíveis");
             }
+
+            if (aluno.assinatura.equals("Premium") && aluno.cursosRealizados > 12) {
+
+                aluno.coins = coinsRewards;
+            }
+
             showStatus();
         }
     }
@@ -67,7 +75,8 @@ public class Cursos {
                                 + " e possui " + aluno.cursosDisponiveis + " cursos disponiveis");
                     }
                 } else {
-                    System.out.println("Nota insuficiente para aprovação no curso! " + String.format("%.2f", nota)
+                    System.out.println("\nA nota do " + nome + " é insuficiente para aprovação no curso! "
+                            + String.format("%.2f", nota)
                             + " de 7.00");
                 }
             } else {
@@ -86,7 +95,7 @@ public class Cursos {
             System.out
                     .println("Nome: " + entry.getKey() + ", Assinatura: " + aluno.assinatura + ", Cursos disponíveis: "
                             + aluno.cursosDisponiveis + ", Cursos realizados: " + aluno.cursosRealizados +
-                            ", Foruns Escritos: " + aluno.forunsEscritos);
+                            ", Foruns Escritos: " + aluno.forunsEscritos + ", Moedas: " + aluno.coins);
         }
     }
 
@@ -97,13 +106,16 @@ public class Cursos {
         int cursosDisponiveis;
         int cursosRealizados;
         int forunsEscritos;
+        int coins;
 
-        private Aluno(String nome, String assinatura, int cursosDisponiveis, int cursosRealizados, int forunsEscritos) {
+        private Aluno(String nome, String assinatura, int cursosDisponiveis, int cursosRealizados, int forunsEscritos,
+                int coins) {
             this.nome = nome;
             this.assinatura = assinatura;
             this.cursosDisponiveis = cursosDisponiveis;
             this.cursosRealizados = cursosRealizados;
             this.forunsEscritos = forunsEscritos;
+            this.coins = coins;
         }
 
         private void setAssinatura(String assinatura) {
@@ -151,7 +163,7 @@ public class Cursos {
                 System.out.println();
                 for (Aluno ganhador : ganhadores) {
                     if (ganhador.cursosDisponiveis == cursos.MAX_CURSOS) {
-                        System.out.println("\n O aluno " + ganhador.nome + " já possui todos os cursos disponíveis");
+                        System.out.println("\nO aluno " + ganhador.nome + " já possui todos os cursos disponíveis");
                     } else {
                         ganhador.cursosDisponiveis++;
                         System.out
