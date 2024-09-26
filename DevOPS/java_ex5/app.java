@@ -1,22 +1,33 @@
-public class app {
+public class App {
     public static void main(String[] args) {
 
         Cursos cursos = new Cursos();
+        Cursos.ForumManager forumManager = new Cursos.ForumManager(cursos);
 
-        cursos.showStatus(); // Mostra o status inicial
+        // Simula alunos concluindo cursos
+        cursos.concluirCurso("Pedro", 8.565f);
 
-        //Conclui o curso e ficam disponiveis mais 3 outros
-        cursos.concluirCurso(7.8093f);
-        cursos.concluirCurso(7.f); 
+        cursos.concluirCurso("Pedro", 6f);
+        cursos.concluirCurso("Pedro", 10f);
 
-        // Reprova no curso com nota abaixo de 7
-        cursos.concluirCurso(5f); 
-        
-        cursos.showStatus(); // Verifica o status final
 
-        cursos.setCursosConcluidos(10); // Define a quantidade de cursos concluidos
+        // Mostra status antes de premiar
+        cursos.showStatus();
 
-        cursos.setCursosConcluidos(13);
+        // Adicona um forum escrito para o aluno
+        forumManager.forumEscito("João");
+        forumManager.forumEscito("João");
+        forumManager.forumEscito("Pedro");
+        forumManager.forumEscito("Maria");
+        forumManager.forumEscito("Maria");
 
+        // Exibe os alunos com o maior numero de foruns Escritos
+        forumManager.alunoVencedor();
+        // Mostra status após premiação
+        cursos.showStatus();
+
+        // Degine a quantidade de cursos que o aluno fez > se passar do maximo
+        // disponivel, atribui a quantidade maxima de cursos disponiveis
+        cursos.setCursosConcluidos("João", 51);
     }
 }
