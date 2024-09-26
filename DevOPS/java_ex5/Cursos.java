@@ -22,7 +22,7 @@ public class Cursos {
                 concluidos = MAX_CURSOS;
             }
 
-            int coinsRewards = concluidos - 12 * 3;
+            int coinsRewards = (concluidos - 12) * 3;
 
             aluno.cursosRealizados = concluidos;
 
