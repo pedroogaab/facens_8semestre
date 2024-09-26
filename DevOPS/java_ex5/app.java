@@ -4,12 +4,12 @@ public class App {
         Cursos cursos = new Cursos();
         Cursos.ForumManager forumManager = new Cursos.ForumManager(cursos);
 
+        cursos.showStatus();
+
         // Simula alunos concluindo cursos
         cursos.concluirCurso("Pedro", 8.565f);
-
         cursos.concluirCurso("Pedro", 6f);
         cursos.concluirCurso("Pedro", 10f);
-
 
         // Mostra status antes de premiar
         cursos.showStatus();

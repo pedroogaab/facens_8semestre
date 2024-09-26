@@ -43,7 +43,6 @@ public class Cursos {
     public void concluirCurso(String nome, float nota) {
         if (alunos.containsKey(nome)) {
             Aluno aluno = alunos.get(nome);
-            aluno.setNota(nota);
 
             if (aluno.cursosDisponiveis > 0) {
 
@@ -97,7 +96,6 @@ public class Cursos {
         String assinatura;
         int cursosDisponiveis;
         int cursosRealizados;
-        float nota;
         int forunsEscritos;
 
         private Aluno(String nome, String assinatura, int cursosDisponiveis, int cursosRealizados, int forunsEscritos) {
@@ -105,12 +103,7 @@ public class Cursos {
             this.assinatura = assinatura;
             this.cursosDisponiveis = cursosDisponiveis;
             this.cursosRealizados = cursosRealizados;
-            this.nota = 0;
-            this.forunsEscritos = 0;
-        }
-
-        private void setNota(float nota) {
-            this.nota = nota;
+            this.forunsEscritos = forunsEscritos;
         }
 
         private void setAssinatura(String assinatura) {
